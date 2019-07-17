@@ -3,7 +3,9 @@ package com.algolia.custombackend.views;
 import android.content.Context;
 import android.util.AttributeSet;
 
-public class NotNullView extends android.support.v7.widget.AppCompatTextView {
+import androidx.appcompat.widget.AppCompatTextView;
+
+public class NotNullView extends AppCompatTextView {
     public NotNullView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }

@@ -3,16 +3,17 @@ package com.algolia.instantsearch.examples.media;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.fragment.app.FragmentManager;
+
 import com.algolia.instantsearch.core.events.ErrorEvent;
-import com.algolia.instantsearch.ui.helpers.InstantSearch;
 import com.algolia.instantsearch.core.helpers.Searcher;
+import com.algolia.instantsearch.ui.helpers.InstantSearch;
 import com.algolia.instantsearch.ui.views.SearchBox;
 
 import org.greenrobot.eventbus.EventBus;
@@ -47,7 +48,8 @@ public class MediaActivity extends AppCompatActivity {
                 .addCheckBox("hd", "HD", true);
     }
 
-    @Override protected void onNewIntent(Intent intent) {
+    @Override
+    protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         searcher.search(intent); // Show results for voice query (from intent)
     }

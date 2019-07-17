@@ -1,9 +1,10 @@
 package com.algolia.instantsearch.examples.ecommerce.views;
 
 import android.content.Context;
-import android.support.v7.widget.AppCompatRatingBar;
 import android.util.AttributeSet;
 import android.util.Log;
+
+import androidx.appcompat.widget.AppCompatRatingBar;
 
 import com.algolia.instantsearch.ui.views.AlgoliaHitView;
 

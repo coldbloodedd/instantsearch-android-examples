@@ -9,6 +9,8 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.AppCompatTextView;
+
 import com.algolia.custombackend.R;
 import com.algolia.instantsearch.ui.views.AlgoliaHitView;
 
@@ -17,7 +19,7 @@ import org.json.JSONObject;
 
 import static com.algolia.custombackend.views.PriceView.SYMBOL_MONEY;
 
-public class PromoView extends android.support.v7.widget.AppCompatTextView implements AlgoliaHitView {
+public class PromoView extends AppCompatTextView implements AlgoliaHitView {
     private final Context context;
 
     public PromoView(Context context, AttributeSet attrs) {

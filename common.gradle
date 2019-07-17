@@ -24,11 +24,11 @@ android {
 
 dependencies {
     // Support Library
-    implementation "com.android.support:appcompat-v7:$VERSION_SUPPORT"
-    implementation "com.android.support:design:$VERSION_SUPPORT"
+    implementation "androidx.appcompat:appcompat:$VERSION_SUPPORT"
+    implementation "com.google.android.material:material:$VERSION_SUPPORT"
 
     // InstantSearch
-    implementation("com.algolia:instantsearch-android:$VERSION_INSTANTSEARCH") {
+    implementation("com.algolia:instantsearch-androidx:$VERSION_INSTANTSEARCH") {
         exclude group: "com.android.support"
     }
 

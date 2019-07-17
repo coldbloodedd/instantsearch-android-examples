@@ -2,7 +2,8 @@ package com.algolia.instantsearch.examples.media.views;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.TextView;
+
+import androidx.appcompat.widget.AppCompatTextView;
 
 import com.algolia.instantsearch.ui.views.AlgoliaHitView;
 
@@ -11,7 +12,7 @@ import org.json.JSONObject;
 import java.text.DecimalFormat;
 
 
-public class HumanViewCountHitView extends android.support.v7.widget.AppCompatTextView implements AlgoliaHitView {
+public class HumanViewCountHitView extends AppCompatTextView implements AlgoliaHitView {
     public HumanViewCountHitView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }

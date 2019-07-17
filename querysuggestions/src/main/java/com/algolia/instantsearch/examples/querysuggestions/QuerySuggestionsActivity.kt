@@ -2,7 +2,7 @@ package com.algolia.instantsearch.examples.querysuggestions
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.algolia.instantsearch.core.helpers.Searcher
 import com.algolia.instantsearch.examples.querysuggestions.BuildConfig.*
 import com.algolia.instantsearch.ui.helpers.InstantSearch

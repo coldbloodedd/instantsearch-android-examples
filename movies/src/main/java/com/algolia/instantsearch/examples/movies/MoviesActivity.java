@@ -2,15 +2,15 @@ package com.algolia.instantsearch.examples.movies;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 
 import com.algolia.instantsearch.core.helpers.Searcher;
 import com.algolia.instantsearch.ui.viewmodels.SearchBoxViewModel;
 import com.algolia.instantsearch.ui.views.SearchBox;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 
 public abstract class MoviesActivity extends AppCompatActivity {

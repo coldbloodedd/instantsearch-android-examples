@@ -12,5 +12,5 @@ android.defaultConfig {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$VERSION_KOTLIN"
-    implementation "com.android.support.constraint:constraint-layout:$VERSION_CONSTRAINT"
+    implementation "androidx.constraintlayout:constraintlayout:$VERSION_CONSTRAINT"
 }

@@ -1,5 +1,5 @@
 android.defaultConfig.applicationId "com.algolia.instantsearch.examples.movies"
 
 dependencies {
-    implementation "com.android.support.constraint:constraint-layout:$VERSION_CONSTRAINT"
+    implementation "androidx.constraintlayout:constraintlayout:$VERSION_CONSTRAINT"
 }

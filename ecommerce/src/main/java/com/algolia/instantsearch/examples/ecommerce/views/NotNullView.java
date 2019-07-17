@@ -2,8 +2,11 @@ package com.algolia.instantsearch.examples.ecommerce.views;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.widget.TextView;
 
-public class NotNullView extends android.support.v7.widget.AppCompatTextView {
+import androidx.appcompat.widget.AppCompatTextView;
+
+public class NotNullView extends AppCompatTextView {
     public NotNullView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
@@ -17,7 +20,7 @@ public class NotNullView extends android.support.v7.widget.AppCompatTextView {
     }
 
     @Override
-    public void setText(CharSequence text, BufferType type) {
+    public void setText(CharSequence text, TextView.BufferType type) {
         if (isNull(text)) {
             setVisibility(GONE);
         } else {

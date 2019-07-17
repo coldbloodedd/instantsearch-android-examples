@@ -12,13 +12,15 @@ import android.util.AttributeSet;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.widget.AppCompatTextView;
+
 import com.algolia.custombackend.R;
 import com.algolia.instantsearch.ui.views.AlgoliaHitView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class PriceView extends android.support.v7.widget.AppCompatTextView implements AlgoliaHitView {
+public class PriceView extends AppCompatTextView implements AlgoliaHitView {
     private final Context context;
 
     public static final String SYMBOL_MONEY = "$";
@@ -46,7 +48,7 @@ public class PriceView extends android.support.v7.widget.AppCompatTextView imple
                 finalText.append(" ").append(SYMBOL_MONEY).append(Double.toString(salePrice));
                 finalText.setSpan(new StrikethroughSpan(), priceText.length() + 1, finalText.length(), Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
             }
-            setText(finalText, BufferType.SPANNABLE);
+            setText(finalText, TextView.BufferType.SPANNABLE);
         } catch (JSONException e) {
             Toast.makeText(context, "Error parsing result:" + e.getMessage(), Toast.LENGTH_SHORT).show();
         }

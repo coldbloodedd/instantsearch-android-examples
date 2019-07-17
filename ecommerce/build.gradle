@@ -1,6 +1,6 @@
 android.defaultConfig.applicationId "com.algolia.instantsearch.examples.ecommerce"
 
 dependencies {
-    implementation "com.android.support.constraint:constraint-layout:$VERSION_CONSTRAINT"
+    implementation "androidx.constraintlayout:constraintlayout:$VERSION_CONSTRAINT"
     implementation "com.algolia.instantsearch-android:voice:$VERSION_VOICE"
 }

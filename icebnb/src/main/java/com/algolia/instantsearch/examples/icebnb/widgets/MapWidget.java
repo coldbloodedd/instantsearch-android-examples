@@ -1,7 +1,7 @@
 package com.algolia.instantsearch.examples.icebnb.widgets;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.algolia.instantsearch.examples.icebnb.model.HitMarker;
 import com.algolia.instantsearch.core.helpers.Searcher;
