@@ -27,7 +27,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearanceTitle"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             algolia:attribute='@{"title"}'
             algolia:variant='@{"movies"}'
             app:layout_constraintEnd_toEndOf="parent"
@@ -43,7 +43,7 @@
             android:layout_marginBottom="8dp"
             android:gravity="center"
             android:textAlignment="center"
-            android:textAppearance="@style/TextAppearanceSubtitle"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             algolia:attribute='@{"year"}'
             algolia:variant='@{"movies"}'
             app:layout_constraintBottom_toBottomOf="parent"
