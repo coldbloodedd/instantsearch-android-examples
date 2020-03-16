@@ -1,6 +1,7 @@
 package com.algolia.instantsearch.showcase.list.movie
 
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import androidx.core.text.buildSpannedString
 import androidx.core.text.italic
@@ -9,6 +10,12 @@ import com.algolia.instantsearch.helper.android.highlighting.toSpannedString
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.list_item_large.view.*
 
+class SearchArticleViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+
+    fun bind(movie: SearchArticle) {
+        view.itemTitle.text = TextUtils.concat(movie.highlightedTitle?.toSpannedString(), " ()")
+    }
+}
 
 class MovieViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
 

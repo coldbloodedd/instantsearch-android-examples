@@ -65,6 +65,10 @@ val client = ClientSearch(
 
 val stubIndex = client.initIndex(IndexName("stub"))
 
+val client2 = FIX HERE! 
+
+val stubIndex2 = client2.initIndex(IndexName("articles"))
+
 fun AppCompatActivity.configureToolbar(toolbar: Toolbar) {
     setSupportActionBar(toolbar)
     supportActionBar?.let {
@@ -156,6 +160,10 @@ fun AppCompatActivity.configureTitle(
 
 fun AppCompatActivity.configureSearcher(searcher: SearcherSingleIndex) {
     searcher.index = client.initIndex(intent.indexName)
+}
+
+fun AppCompatActivity.configureSearcher2(searcher: SearcherSingleIndex) {
+    searcher.index = client2.initIndex(intent.indexName)
 }
 
 fun AppCompatActivity.configureSearcher(searcher: SearcherForFacets) {
