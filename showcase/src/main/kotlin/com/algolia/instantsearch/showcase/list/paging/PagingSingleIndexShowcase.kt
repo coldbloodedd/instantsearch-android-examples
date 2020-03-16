@@ -227,10 +227,10 @@ public class SearcherSingleIndexDataSource2<T>(
             try {
                 val response = searcher.search()
                 
-                if (queryLoaded != searcher.query.query) {
-                    invalidate()
-                    Log.d("BOOMOO5", "is query different " + searcher.query.query)
-                }
+//                if (queryLoaded != searcher.query.query) {
+//                    invalidate()
+//                    Log.d("BOOMOO5", "is query different " + searcher.query.query)
+//                }
                 Log.d("BOOMOO2", "search inside loadinitial " + searcher.query.query)
                 val nextKey = if (response.nbHits > initialLoadSize) 1 else null
 
