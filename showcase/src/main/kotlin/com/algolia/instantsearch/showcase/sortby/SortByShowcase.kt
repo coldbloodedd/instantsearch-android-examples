@@ -3,22 +3,26 @@ package com.algolia.instantsearch.showcase.sortby
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import com.algolia.instantsearch.core.connection.ConnectionHandler
 import com.algolia.instantsearch.core.hits.connectHitsView
+import com.algolia.instantsearch.helper.android.list.SearcherSingleIndexDataSource
+import com.algolia.instantsearch.helper.android.sortby.SortByViewAutocomplete
+import com.algolia.instantsearch.helper.android.sortby.connectPagedList
+import com.algolia.instantsearch.helper.searcher.SearcherSingleIndex
+import com.algolia.instantsearch.helper.sortby.SortByConnector
+import com.algolia.instantsearch.helper.sortby.SortByViewModel
+import com.algolia.instantsearch.helper.sortby.connectView
 import com.algolia.instantsearch.showcase.R
 import com.algolia.instantsearch.showcase.client
 import com.algolia.instantsearch.showcase.configureRecyclerView
 import com.algolia.instantsearch.showcase.configureToolbar
 import com.algolia.instantsearch.showcase.list.movie.Movie
 import com.algolia.instantsearch.showcase.list.movie.MovieAdapter
-import com.algolia.instantsearch.helper.android.sortby.SortByViewAutocomplete
-import com.algolia.instantsearch.helper.searcher.SearcherSingleIndex
-import com.algolia.instantsearch.helper.sortby.SortByConnector
-import com.algolia.instantsearch.helper.sortby.connectView
 import com.algolia.search.helper.deserialize
 import com.algolia.search.model.IndexName
 import kotlinx.android.synthetic.main.showcase_sort_by.*
-
 
 class SortByShowcase : AppCompatActivity() {
 
@@ -31,8 +35,16 @@ class SortByShowcase : AppCompatActivity() {
         1 to indexYearAsc,
         2 to indexYearDesc
     )
-    private val sortBy = SortByConnector(indexes, searcher, selected = 0)
+
+    private val sortByViewModel = SortByViewModel(indexes, selected = 0)
+    private val sortBy = SortByConnector(searcher, sortByViewModel)
     private val connection = ConnectionHandler(sortBy)
+
+    private val dataSourceFactory =
+        SearcherSingleIndexDataSource.Factory(searcher) { it.deserialize(Movie.serializer()) }
+    private val pagedListConfig =
+        PagedList.Config.Builder().setPageSize(10).setEnablePlaceholders(false).build()
+    private val movies = LivePagedListBuilder(dataSourceFactory, pagedListConfig).build()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +65,8 @@ class SortByShowcase : AppCompatActivity() {
         connection += searcher.connectHitsView(adapterMovie) { response ->
             response.hits.deserialize(Movie.serializer())
         }
+
+        connection += sortBy.connectPagedList(movies)
 
         configureToolbar(toolbar)
         configureRecyclerView(hits, adapterMovie)
