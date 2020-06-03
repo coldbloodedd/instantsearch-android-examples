@@ -35,15 +35,11 @@ class SortByShowcase : AppCompatActivity() {
         1 to indexYearAsc,
         2 to indexYearDesc
     )
-
-    private val sortByViewModel = SortByViewModel(indexes, selected = 0)
-    private val sortBy = SortByConnector(searcher, sortByViewModel)
+    private val sortBy = SortByConnector(indexes, searcher, selected = 0)
     private val connection = ConnectionHandler(sortBy)
 
-    private val dataSourceFactory =
-        SearcherSingleIndexDataSource.Factory(searcher) { it.deserialize(Movie.serializer()) }
-    private val pagedListConfig =
-        PagedList.Config.Builder().setPageSize(10).setEnablePlaceholders(false).build()
+    private val dataSourceFactory = SearcherSingleIndexDataSource.Factory(searcher) { it.deserialize(Movie.serializer()) }
+    private val pagedListConfig = PagedList.Config.Builder().setPageSize(10).setEnablePlaceholders(false).build()
     private val movies = LivePagedListBuilder(dataSourceFactory, pagedListConfig).build()
 
     override fun onCreate(savedInstanceState: Bundle?) {
