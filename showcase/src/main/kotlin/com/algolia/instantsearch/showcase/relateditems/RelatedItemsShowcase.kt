@@ -1,5 +1,6 @@
 package com.algolia.instantsearch.showcase.relateditems
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.algolia.instantsearch.core.connection.ConnectionHandler
@@ -8,6 +9,7 @@ import com.algolia.instantsearch.helper.relateditems.MatchingPattern
 import com.algolia.instantsearch.helper.relateditems.connectRelatedHitsView
 import com.algolia.instantsearch.helper.searcher.SearcherSingleIndex
 import com.algolia.instantsearch.showcase.R
+import com.algolia.instantsearch.showcase.SampleActivity
 import com.algolia.instantsearch.showcase.configureRecyclerView
 import com.algolia.instantsearch.showcase.configureSearcher
 import com.algolia.instantsearch.showcase.configureToolbar
@@ -15,6 +17,7 @@ import com.algolia.instantsearch.showcase.stubIndex
 import com.algolia.search.helper.deserialize
 import com.algolia.search.model.Attribute
 import kotlinx.android.synthetic.main.showcase_relateditems.*
+import java.io.Serializable
 
 class RelatedItemsShowcase : AppCompatActivity() {
 
@@ -44,10 +47,21 @@ class RelatedItemsShowcase : AppCompatActivity() {
             MatchingPattern(Attribute("categories"), 2, Product::categories)
         )
         hitsAdapter.callback = { product ->
-            connection += relatedItemsSearcher.connectRelatedHitsView(relatedItemsAdapter, product, matchingPatterns) { response ->
+            connection += relatedItemsSearcher.connectRelatedHitsView(
+                relatedItemsAdapter,
+                product,
+                matchingPatterns
+            ) { response ->
                 response.hits.deserialize(Product.serializer())
             }
             relatedItemsSearcher.searchAsync()
+        }
+
+        relatedItemsAdapter.callback = { product ->
+            val intent = Intent(this, SampleActivity::class.java)
+            val args = SampleActivity.getArgs(product)
+            intent.putExtras(args)
+            startActivity(intent)
         }
 
         searcher.searchAsync()

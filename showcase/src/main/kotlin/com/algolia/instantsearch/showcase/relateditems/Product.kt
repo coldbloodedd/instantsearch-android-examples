@@ -21,3 +21,5 @@ data class Product(
     val popularity: Long,
     override val objectID: ObjectID
 ) : Indexable
+
+
